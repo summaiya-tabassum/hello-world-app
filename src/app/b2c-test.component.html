@@ -1,0 +1,104 @@
+<html lang="en">
+<div id="login">
+    <h2 tabindex="0" class="renderNewLines compBlurb" >{{language.compWifiBlurbLine}}</h2>
+    <div id="api"></div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div>
+            <div class="leftAlign">
+                <div class="inputWithLink">
+                <div id="validationStatusEmail" class="error renderNewLines x-small-margin"
+                         aria-invalid="true"
+                         aria-describedBy="err_1"
+                         [ngClass]="{hidden: messageManager.messages['VALIDATION_STATUS_EMAIL'].text === ''}"
+                         style= "margin-top: 1px;">
+                        <div tabindex="0" id="err_5" aria-describedBy="err_5">{{messageManager.messages['VALIDATION_STATUS_EMAIL'].text}}</div>
+                    </div>
+                </div>
+                
+                <div class="inputWithLink">
+                    <div id="validationStatus" class="error renderNewLines x-small-margin"
+                         aria-invalid="true"
+                         aria-describedBy="err_1"
+                         [ngClass]="{hidden: messageManager.messages['VALIDATION_STATUS_PASSWORD'].text === ''}">
+                        <div tabindex="0" id="err_1" aria-describedBy="err_1">{{messageManager.messages['VALIDATION_STATUS_PASSWORD'].text}}</div>
+                    </div>
+                    <span class="link leftAlign forgotUP" [ngClass]="{hasErrorPassword: errors['password'],hasErrorUsername: errors['username']}" id="forgot" [innerHTML]="language.forgot"></span>
+                </div>
+
+                <div class="input-wrapper topMargin">
+                    <input type="checkbox" name="rememberMe" id="rememberMe" class="css-checkbox" value="rememberMe"
+                           aria-label="Remember Me checkbox" ngModel/>
+                    <label for="rememberMe" class="checkbox-paragraph" aria-label="Remember Me Details">
+                        <span id="rememberMeText" class="renderNewLines checkbox-text">
+                            {{language.rememberMe}}
+                        </span>
+                    </label>
+                </div>
+
+                <div class="input-wrapper">
+                    <input type="checkbox" name="subscribe" id="subscribe" class="css-checkbox" aria-label="Subscribe to Offers Checkbox"
+                           ngModel/>
+                    <label for="subscribe" class="checkbox-paragraph" aria-label="Subscribe to Offers Details">
+                        <span id="subscribeText" class="renderNewLines checkbox-text">{{language.subscribe}}
+                            <a tabindex="0" class="url" id="contactUsLink"
+                               (click)="openDialog(language.contactUsLink, language.contactUsModalTitle);false"
+                               (keypress)="openDialog(language.contactUsLink, language.contactUsModalTitle);false"
+                            >
+                                {{language.contactUs}}
+                            </a>
+                            {{language.moreInfo}}
+                        </span>
+                    </label>
+                </div>
+
+                <div class="input-wrapper" aria-describedBy="err_2">
+                    <div id="status" class="error renderNewLines"
+                         aria-invalid="true"
+                         aria-describedBy="err_2"
+                         [ngClass]="{hidden: messageManager.messages['STATUS'].text === ''}">
+                        <div tabindex="0" id="err_2" aria-describedBy="err_2">
+                            {{messageManager.messages['STATUS'].text}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topMargin" id="TsAndCs" role="region" aria-label="Terms & Conditions Details">
+                    <span id="viewOurGOPlus" [innerHTML]="language.viewOur"></span>
+                    <span class="terms-link">
+                        <a tabindex="0" class="url" id="termsAndConditionsLink"
+                           (click)="openDialog(language.tsAndCsLink, language.tsAndCsModalTitle);false"
+                           (keypress)="openDialog(language.tsAndCsLink, language.tsAndCsModalTitle);false"
+                        >
+                            {{language.tsAndCs}}
+                        </a>,
+                    </span>
+                    <span class="privacy-link">
+                        <a tabindex="0" id="privacyLink" class="privacyLink url"
+                           (click)="openDialog(language.privacyLink, language.privacyModalTitle);false"
+                           (keypress)="openDialog(language.privacyLink, language.privacyModalTitle);false"
+                        >
+                            {{language.privacyPolicy}}
+                        </a>
+                        {{language.and}}
+                    </span>
+                    <span class="notice-of-collection">
+                        <a tabindex="0" id="noticeOfCollection"
+                           class="noticeOfCollection url"
+                           (click)="openDialog(language.freedomOfInformationLink, language.freedomOfInformationModalTitle)"
+                           (keypress)="openDialog(language.freedomOfInformationLink, language.freedomOfInformationModalTitle)"
+                        >{{language.noticeOfCollection}}
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div class="loaderContainer" [ngClass]="{hidden: !submitInProgress}">
+    <div class="loader"></div>
+</div>
+<label class="invisible" for="username">Username input</label>
+<label class="invisible" for="password">Password input</label>
+</html>
